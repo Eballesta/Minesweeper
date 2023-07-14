@@ -382,6 +382,15 @@ And the cell (4,3) should be uncovered
 And the cell (1,2) should be uncovered
 
 #CASES OF COUNTER
+Scenario: Starting the game - The counter should show the count of mines
+Given the player loads the following mock data:
+"""
+| * | o | * | o |
+| * | o | * | * |
+| o | * | * | * |
+"""
+Then the counter should be '8'
+
 Scenario: Putting flags - The counter should show the correct number
 Given the player loads the following mock data:
 """
