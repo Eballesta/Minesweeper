@@ -56,10 +56,10 @@ Given the player loads the following mock data:
 """
 | * | o |
 """
-When the player left click the cell (1,2)
+When the player left clicks the cell (1,2)
 Then the cell (1,2) should be uncovered
 
-Scenario: Uncovering a cell - The cell should be disabled 
+Scenario: Uncovering a cell - The cell should be disabled
 Given the player loads the following mock data:
 """
 | * | o |
@@ -67,28 +67,28 @@ Given the player loads the following mock data:
 When the player uncovers the cell (1,2)
 Then the cell (1,2) should be disabled
 
-Scenario: Rigth clicking one time a cell - The cell should be a flag
+Scenario: Right-clicking one time on a cell - The cell should be a flag
 Given the player loads the following mock data:
 """
 | * | o |
 """
-When the player rigth click "1" times the cell (1,2) 
+When the player right-clicks "1" times on the cell (1,2)
 Then the cell (1,2) should be "!"
 
-Scenario: Rigth clicking two times a cell - The cell should be a inconclusive
+Scenario: Right-clicking two times on a cell - The cell should be inconclusive
 Given the player loads the following mock data:
 """
 | * | o |
 """
-When the player rigth click "2" times the cell (1,2) 
+When the player right-clicks "2" times on the cell (1,2)
 Then the cell (1,2) should be "?"
 
-Scenario: Rigth clicking three times a cell - Remove the incoclusive
+Scenario: Right-clicking three times on a cell - Remove the inconclusive
 Given the player loads the following mock data:
 """
 | * | o |
 """
-When the player rigth click "3" times the cell (1,2) 
+When the player right-clicks "3" times on the cell (1,2)
 Then the cell (1,2) should be "."
 
 Scenario: Uncovering a cell with a flag - The cell should be uncovered
@@ -96,7 +96,7 @@ Given the player loads the following mock data:
 """
 | * | o |
 """
-And the player put "!" in the cell (1,2)
+And the player puts "!" in the cell (1,2)
 When the player uncovers the cell (1,2)
 Then the cell (1,2) should be uncovered
 
@@ -105,7 +105,7 @@ Given the player loads the following mock data:
 """
 | * | o |
 """
-And the player put "!" in the cell (1,2)
+And the player puts "!" in the cell (1,2)
 When the player uncovers the cell (1,2)
 Then the cell (1,2) should be disabled
 
@@ -114,7 +114,7 @@ Given the player loads the following mock data:
 """
 | * | o |
 """
-And the player put "!" in the cell (1,1)
+And the player puts "!" in the cell (1,1)
 When the player uncovers the cell (1,1)
 Then the cell (1,1) should be '@'
 
@@ -124,7 +124,7 @@ Given the player loads the following mock data:
 | * | o |
 """
 And the player uncovers the cell (1,2)
-When the player put "?" in the cell (1,2)
+When the player puts "?" in the cell (1,2)
 Then the cell (1,2) should be uncovered
 
 Scenario: Putting a flag on an uncovered cell - The cell should stay disabled
@@ -133,11 +133,11 @@ Given the player loads the following mock data:
 | * | o |
 """
 And the player uncovers the cell (1,2)
-When the player put "?" in the cell (1,2) 
+When the player puts "?" in the cell (1,2)
 Then the cell (1,2) should be disabled
 
 #CASES OF LOSING
-Scenario: Uncovering a mine - The player should lose the game 
+Scenario: Uncovering a mine - The player should lose the game
 Given the player loads the following mock data:
 """
 | * | o |
@@ -153,33 +153,33 @@ Given the player loads the following mock data:
 When the player uncovers the cell (1,1)
 Then all the cells should be disabled
 
-Scenario: Losing the game - The inconclusive with no mine cells should stay inconclusive
+Scenario: Losing the game - The inconclusive cells with no mine should stay inconclusive
 Given the player loads the following mock data:
 """
 | * | o |
 | * | o |
 """
-And the player put "?" in the cell (1,2) 
+And the player puts "?" in the cell (1,2)
 When the player uncovers the cell (1,1)
 Then the cell (1,2) should be "?"
 
-Scenario: Losing the game - The inconclusive with mine cells should change to mine
+Scenario: Losing the game - The inconclusive cells with mines should change to mine
 Given the player loads the following mock data:
 """
 | * | o |
 | * | o |
 """
-And the player put "?" in the cell (2,1) 
+And the player puts "?" in the cell (2,1)
 When the player uncovers the cell (1,1)
 Then the cell (1,2) should be "#"
 
-Scenario: Losing the game - The flags with mine cells should stay beeing flags
+Scenario: Losing the game - The flags with mine cells should stay as flags
 Given the player loads the following mock data:
 """
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (2,1) 
+And the player puts "!" in the cell (2,1)
 When the player uncovers the cell (1,1)
 Then the cell (2,1) should be "!"
 
@@ -189,7 +189,7 @@ Given the player loads the following mock data:
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (1,2) 
+And the player puts "!" in the cell (1,2)
 When the player uncovers the cell (1,1)
 Then the cell (1,2) should be "x"
 
@@ -212,7 +212,7 @@ Given the player loads the following mock data:
 When the player uncovers the cell (1,1)
 Then the cell (1,1) should be '@'
 
-Scenario: Losing the game - The hidden cells with mine should change to normal mine
+Scenario: Losing the game - The hidden cells with mines should change to normal mines
 Given the player loads the following mock data:
 """
 | * | o |
@@ -250,14 +250,14 @@ Given the player loads the following mock data:
 When the player uncovers the cell (1,2)
 Then all the cells should be disabled
 
-Scenario: Winning the game - All the mines should change to flag
+Scenario: Winning the game - All the mines should change to flags
 Given the player loads the following mock data:
 """
 | o | * | o |
 | * | o | * |
 """
-And the player put "!" in the cell (2,1)
-And the player put "?" in the cell (1,2)
+And the player puts "!" in the cell (2,1)
+And the player puts "?" in the cell (1,2)
 And the player uncovers the cell (1,1)
 And the player uncovers the cell (1,3)
 When the player uncovers the cell (2,2)
@@ -277,9 +277,9 @@ Then the cell (1,2) should be uncovered
 And the cell (2,2) should be uncovered
 
 #CASES OF UNCOVERED CELLS
-Scenario Outline: Uncovering a middle cell souranded with mines - The status should be the count of mines
+Scenario Outline: Uncovering a middle cell surrounded with mines - The status should be the count of mines
 Given the player loads the following mock data: "<board>"
-When the player uncovers the cell (2,2) 
+When the player uncovers the cell (2,2)
 Then the cell (2,2) should be "<status>"
 
 Examples:
@@ -293,9 +293,9 @@ Examples:
 | ***-*o*-**o |      7 |
 | ***-*o*-*** |      8 |
 
-Scenario Outline: Uncovering a border cell souranded with mines - The status should be the count of mines
+Scenario Outline: Uncovering a border cell surrounded with mines - The status should be the count of mines
 Given the player loads the following mock data: "<board>"
-When the player uncovers the cell (1,2) 
+When the player uncovers the cell (1,2)
 Then the cell (1,2) should be "<status>"
 
 Examples:
@@ -308,9 +308,9 @@ Examples:
 | *o*-***-*oo |      5 |
 | *o*-***-**o |      5 |
 
-Scenario Outline: Uncovering a corner cell souranded with mines - The status should be the count of mines
+Scenario Outline: Uncovering a corner cell surrounded with mines - The status should be the count of mines
 Given the player loads the following mock data: "<board>"
-When the player uncovers the cell (1,1) 
+When the player uncovers the cell (1,1)
 Then the cell (1,1) should be "<status>"
 
 Examples:
@@ -339,7 +339,7 @@ And the cell (3,3) should be uncovered
 And the cell (1,1) should be covered
 And the cell (2,1) should be covered
 
-Scenario: Uncovering cells without mines around - The cells should be an empty cell
+Scenario: Uncovering cells without mines around - The cells should be empty cells
 Given the player loads the following mock data:
 """
 | * | o | o | o |
@@ -359,8 +359,8 @@ Given the player loads the following mock data:
 | o | * | o | o |
 | o | * | o | o |
 """
-And the player put "!" in the cell (1,3)
-And the player put "!" in the cell (4,3)
+And the player puts "!" in the cell (1,3)
+And the player puts "!" in the cell (4,3)
 When the player uncovers the cell (1,4)
 Then the cell (1,3) should be '!'
 And the cell (4,3) should be '!'
@@ -374,8 +374,8 @@ Given the player loads the following mock data:
 | o | * | o | o |
 | o | * | o | o |
 """
-And the player put "?" in the cell (1,3)
-And the player put "?" in the cell (4,3)
+And the player puts "?" in the cell (1,3)
+And the player puts "?" in the cell (4,3)
 When the player uncovers the cell (1,4)
 Then the cell (1,3) should be uncovered
 And the cell (4,3) should be uncovered
@@ -389,11 +389,11 @@ Given the player loads the following mock data:
 | * | o | * | * |
 | o | * | * | * |
 """
-And the player put "!" in the cell (1,1)
-And the player put "!" in the cell (1,3)
-And the player put "!" in the cell (2,4)
-And the player put "!" in the cell (3,2)
-When the player put "!" in the cell (2,2)
+And the player puts "!" in the cell (1,1)
+And the player puts "!" in the cell (1,3)
+And the player puts "!" in the cell (2,4)
+And the player puts "!" in the cell (3,2)
+When the player puts "!" in the cell (2,2)
 Then the counter should be '3'
 
 Scenario: Putting more flags than mines - The counter should show a negative number
@@ -403,41 +403,41 @@ Given the player loads the following mock data:
 | o | o | o |
 | o | * | * |
 """
-And the player put "!" in the cell (1,1)
-And the player put "!" in the cell (1,2)
-And the player put "!" in the cell (1,3)
-And the player put "!" in the cell (2,1)
-When the player put "!" in the cell (2,2)
+And the player puts "!" in the cell (1,1)
+And the player puts "!" in the cell (1,2)
+And the player puts "!" in the cell (1,3)
+And the player puts "!" in the cell (2,1)
+When the player puts "!" in the cell (2,2)
 Then the counter should be '-1'
 
-Scenario: Putting an inconclusive - The counter should increase in one
+Scenario: Putting an inconclusive - The counter should increase by one
 Given the player loads the following mock data:
 """
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (1,1)
-When the player put "?" in the cell (1,1)
+And the player puts "!" in the cell (1,1)
+When the player puts "?" in the cell (1,1)
 Then the counter should be '2'
 
-Scenario: Take out an inconclusive - The counter shouldn't change
+Scenario: Taking out an inconclusive - The counter shouldn't change
 Given the player loads the following mock data:
 """
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (1,1)
-And the player put "?" in the cell (1,1)
-When the player put "." in the cell (1,1)
+And the player puts "!" in the cell (1,1)
+And the player puts "?" in the cell (1,1)
+When the player puts "." in the cell (1,1)
 Then the counter should be '2'
 
-Scenario: Uncovering a cell with a flag - The counter should increase in one
+Scenario: Uncovering a cell with a flag - The counter should increase by one
 Given the player loads the following mock data:
 """
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (1,2)
+And the player puts "!" in the cell (1,2)
 When the player uncovers the cell (1,2)
 Then the counter should be '2'
 
@@ -447,7 +447,7 @@ Given the player loads the following mock data:
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (1,1)
+And the player puts "!" in the cell (1,1)
 When the player uncovers the cell (1,1)
 Then the counter should be '1'
 
@@ -457,7 +457,7 @@ Given the player loads the following mock data:
 | * | o |
 | * | o |
 """
-And the player put "!" in the cell (1,1)
+And the player puts "!" in the cell (1,1)
 And the player uncovers the cell (1,2)
 When the player uncovers the cell (2,2)
 Then the counter should be '0'
