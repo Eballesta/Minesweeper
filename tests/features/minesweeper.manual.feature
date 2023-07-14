@@ -36,7 +36,7 @@ To define the board display will use:
     "8" Clean cell with 8 adjacent mines
     AFTER FINISH GAME CELLS
     "@" highlighted mine
-    "#" not highlighted mine
+    "#" normal mine
 Game example: http://birrell.org/andrew/minesweeper/
 
 Background:
@@ -50,11 +50,11 @@ Scenario: Restarting game - The timer should be empty
 When the player presses the restart button
 Then the timer should be empty
 
-Scenario: Uncovering a cell - The timer should start
+Scenario: Uncovering the first cell - The timer should start
 When the player uncovers any cell
 Then the timer should start
 
-Scenario: Puting a flag on a cell - The timer should start
+Scenario: Putting the first flag on a cell - The timer should start
 When the player puts '!' at any cell
 Then the timer should start
 

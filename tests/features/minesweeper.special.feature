@@ -37,7 +37,7 @@ To define the board display will use:
     "8" Clean cell with 8 adjacent mines
     AFTER FINISH GAME CELLS
     "@" highlighted mine
-    "#" not highlighted mine
+    "#" normal mine
 Game example: http://birrell.org/andrew/minesweeper/
 
 Background:

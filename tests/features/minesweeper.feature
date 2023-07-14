@@ -37,7 +37,7 @@ To define the board display will use:
     "8" Clean cell with 8 adjacent mines
     AFTER FINISH GAME CELLS
     "@" highlighted mine
-    "#" not highlighted mine
+    "#" normal mine
 Game example: http://birrell.org/andrew/minesweeper/
 
 Background:
@@ -212,7 +212,7 @@ Given the player loads the following mock data:
 When the player uncovers the cell (1,1)
 Then the cell (1,1) should be '@'
 
-Scenario: Losing the game - The hidden cells with mine should change to not highlighted mine
+Scenario: Losing the game - The hidden cells with mine should change to normal mine
 Given the player loads the following mock data:
 """
 | * | o |
@@ -277,7 +277,7 @@ Then the cell (1,2) should be uncovered
 And the cell (2,2) should be uncovered
 
 #CASES OF UNCOVERED CELLS
-Scenario Outline: Uncovering a middle cell souranded with mines - The number should be the count of mines
+Scenario Outline: Uncovering a middle cell souranded with mines - The status should be the count of mines
 Given the player loads the following mock data: "<board>"
 When the player uncovers the cell (2,2) 
 Then the cell (2,2) should be "<status>"
@@ -293,7 +293,7 @@ Examples:
 | ***-*o*-**o |      7 |
 | ***-*o*-*** |      8 |
 
-Scenario Outline: Uncovering a border cell souranded with mines - The number should be the count of mines
+Scenario Outline: Uncovering a border cell souranded with mines - The status should be the count of mines
 Given the player loads the following mock data: "<board>"
 When the player uncovers the cell (1,2) 
 Then the cell (1,2) should be "<status>"
@@ -308,7 +308,7 @@ Examples:
 | *o*-***-*oo |      5 |
 | *o*-***-**o |      5 |
 
-Scenario Outline: Uncovering a corner cell souranded with mines - The number should be the count of mines
+Scenario Outline: Uncovering a corner cell souranded with mines - The status should be the count of mines
 Given the player loads the following mock data: "<board>"
 When the player uncovers the cell (1,1) 
 Then the cell (1,1) should be "<status>"
@@ -351,7 +351,7 @@ Then the cell (1,4) should be '0'
 And the cell (2,4) should be '0'
 And the cell (3,4) should be '0'
 
-Scenario: Uncovering a cell - The waterfall should work but ignore the flags
+Scenario: The waterfall triggers - The flags should stay covered
 Given the player loads the following mock data:
 """
 | * | o | o | o |
@@ -366,7 +366,7 @@ Then the cell (1,3) should be '!'
 And the cell (4,3) should be '!'
 And the cell (1,2) should be uncovered
 
-Scenario: Uncovering a cell - The waterfall should work and uncover the inconclusive cells without mines
+Scenario: The waterfall triggers - The inconclusive cells without mines should be uncovered
 Given the player loads the following mock data:
 """
 | * | o | o | o |
@@ -396,7 +396,7 @@ And the player put "!" in the cell (3,2)
 When the player put "!" in the cell (2,2)
 Then the counter should be '3'
 
-Scenario: Putting more flags than mines - The counter should show the correct negative number
+Scenario: Putting more flags than mines - The counter should show a negative number
 Given the player loads the following mock data:
 """
 | * | o | * |
@@ -410,7 +410,7 @@ And the player put "!" in the cell (2,1)
 When the player put "!" in the cell (2,2)
 Then the counter should be '-1'
 
-Scenario: Putting an inconclusive - The counter should show the correct number
+Scenario: Putting an inconclusive - The counter should increase in one
 Given the player loads the following mock data:
 """
 | * | o |
@@ -420,7 +420,7 @@ And the player put "!" in the cell (1,1)
 When the player put "?" in the cell (1,1)
 Then the counter should be '2'
 
-Scenario: Take out an inconclusive - The counter should show the correct number
+Scenario: Take out an inconclusive - The counter shouldn't change
 Given the player loads the following mock data:
 """
 | * | o |
@@ -431,7 +431,7 @@ And the player put "?" in the cell (1,1)
 When the player put "." in the cell (1,1)
 Then the counter should be '2'
 
-Scenario: Uncovering a cell with a flag - The counter should show the correct number
+Scenario: Uncovering a cell with a flag - The counter should increase in one
 Given the player loads the following mock data:
 """
 | * | o |
